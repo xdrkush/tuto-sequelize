@@ -21,7 +21,7 @@ flush privileges;
 
 MySQL:
 ```
-mysql -u tuto
+mysql -u tuto -p
 create database tutosequelize;
 exit;
 ```
