@@ -2,7 +2,7 @@ const db = require("../models");
 const User = db.users;
 const Book = db.books;
 
-// Get all User include books
+// On récupère tout nos user avec les book en relation
 exports.findAllUserHTTP = (req, res) => {
   console.log('HTTP Find ALL:')
   return User.findAll({
@@ -12,8 +12,9 @@ exports.findAllUserHTTP = (req, res) => {
   });
 };
 
-// Create and Save new users
+// on créé notre user
 exports.createUserHTTP = (req, res) => {
+  // Attention à ce que le {...req.body} corresponde bien avec les key:value de notre model
   return User.create({ ...req.body }).then((user) => {
     console.log(">> Created user: " + JSON.stringify(user, null, 4));
     return res.json({ user })
@@ -22,8 +23,9 @@ exports.createUserHTTP = (req, res) => {
   });
 };
 
-// Create and Save new users
+// Update Users
 exports.updateUserByIdHTTP = (req, res) => {
+  // where pour définir quel user à éditer
   return User.update({ ...req.body }, { where: { id: req.params.id } }).then((user) => {
     console.log(">> Created user: " + JSON.stringify(user, null, 4));
     return res.json({ user })
@@ -32,7 +34,7 @@ exports.updateUserByIdHTTP = (req, res) => {
   });
 };
 
-// Get the books for a given user
+// Rechercher un user via son id avec les book en relations
 exports.findUserByIdHTTP = (req, res) => {
   return User.findByPk(req.params.id, { include: ["books"] }).then((user) => {
     return res.json({ user });
@@ -41,7 +43,7 @@ exports.findUserByIdHTTP = (req, res) => {
   });
 };
 
-// Get the books for a given user
+// Supprimer un user via sont id
 exports.deleteUserByIdHTTP = (req, res) => {
   return User.destroy({where: { id: req.params.id }}).then((user) => {
     return res.json({ user });
@@ -50,7 +52,7 @@ exports.deleteUserByIdHTTP = (req, res) => {
   });
 };
 
-// Get the books for a given user
+// Supprimer tous les users
 exports.deleteAllUserHTTP = (req, res) => {
   return User.destroy({where: {}}).then((user) => {
     return res.json({ user });

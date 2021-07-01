@@ -3,7 +3,7 @@ const User = db.users;
 const Book = db.books;
 const run = require('./').run
 
-// Create and Save new users
+// Création d'un user
 exports.createUser = (user) => {
   return User.create({
     name: user.name,
@@ -17,7 +17,7 @@ exports.createUser = (user) => {
   });
 };
 
-// Create and Save new books
+// Création d'un book
 exports.createBook = (id, book) => {
   return Book.create({
     title: book.title,
@@ -31,7 +31,7 @@ exports.createBook = (id, book) => {
   });
 };
 
-// Get the books for a given user
+// Rechercher un User via un id avec les books en relation
 exports.findUserById = (id) => {
   return User.findByPk(id, { include: ["books"] }).then((user) => {
     return user;
@@ -40,7 +40,7 @@ exports.findUserById = (id) => {
   });
 };
 
-// Get the books for a given book id
+// Rechercher un book via son id avec l'user en relation
 exports.findBookById = (id) => {
   return Book.findByPk(id, { include: ["users"] }).then((book) => {
     return book;
@@ -49,7 +49,7 @@ exports.findBookById = (id) => {
   });
 };
 
-// Get all User include books
+// Rechercher tous les users
 exports.findAll = () => {
   return User.findAll({
     include: ["books"],

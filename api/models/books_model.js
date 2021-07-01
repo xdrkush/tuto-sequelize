@@ -1,3 +1,7 @@
+/*
+ * Model Book
+ * ********** */
+
 module.exports = (sequelize, DataTypes) => {
     const Book = sequelize.define("book", {
         title: {

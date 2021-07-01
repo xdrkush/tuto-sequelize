@@ -31,6 +31,7 @@ const ROUTER = require('./api/router')
 app.use(ROUTER)
 
 // Test
+// a décommenter si l'on veux tester la DB sans passer par 'npm run test'
 // require('./test')
 
 // Lancement de l'application

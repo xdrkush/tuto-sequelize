@@ -1,6 +1,11 @@
+
+/*
+Ici c'est pour test notre DB et aussi notre controllers_test
+*/
 const db = require("../api/models");
 const controller = require("./users_controllers_test");
 
+// Tout est creer à la volé
 const run = async () => {
     const tut1 = await controller.createUser({
         name: "Tut#1",
